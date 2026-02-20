@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia de Amor 💜</title>
+    <link rel="stylesheet" href="trivia.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Fondo de estrellas -->
+    <div id="stars-bg"></div>
+
+    <div class="container" id="mainContainer">
+
+        <!-- ══════════════════════════════════
+             PANTALLA DE BIENVENIDA
+        ══════════════════════════════════ -->
+        <div id="introScreen" class="screen active">
+            <div class="intro-emoji">💌</div>
+            <h1 class="title">Trivia </h1>
+            <p class="subtitle">Hay preguntas que solo tú puedes responder…</p>
+            <div class="instruction-box">
+                <p>
+                    Responde las preguntas sobre nosotros.<br>
+                    Si aciertas todas… <strong>hay una sorpresa muy especial</strong> esperándote. 🎁💜
+                </p>
+            </div>
+            <button id="startBtn" class="main-btn">¡Empezar! 💕</button>
+            <a href="index.html" class="back-link">← Volver al inicio</a>
+        </div>
+
+        <!-- ══════════════════════════════════
+             PANTALLA DE PREGUNTAS
+        ══════════════════════════════════ -->
+        <div id="quizScreen" class="screen">
+            <div class="quiz-header">
+                <div class="progress-label">Pregunta <span id="currentQ">1</span> de <span id="totalQ">5</span></div>
+                <div id="quizProgressBar">
+                    <div id="quizProgressFill"></div>
+                </div>
+                <div class="hearts-score">
+                    <span id="heartsDisplay">❤️❤️❤️</span>
+                </div>
+            </div>
+
+            <div class="question-card" id="questionCard">
+                <div class="question-emoji" id="questionEmoji">💜</div>
+                <p class="question-text" id="questionText">¿Cuál es tu color favorito?</p>
+            </div>
+
+            <div class="options-grid" id="optionsGrid">
+                <!-- Las opciones se generan por JS -->
+            </div>
+
+            <div class="feedback-msg" id="feedbackMsg"></div>
+        </div>
+
+        <!-- ══════════════════════════════════
+             PANTALLA DE RESPUESTA INCORRECTA
+        ══════════════════════════════════ -->
+        <div id="wrongScreen" class="screen">
+            <div class="wrong-emoji">🙈</div>
+            <h2 class="wrong-title">¡Casi! Inténtalo de nuevo</h2>
+            <p class="wrong-text">
+                No te preocupes, amor. Las respuestas están en los momentos que hemos vivido juntos. 💜<br><br>
+                Piénsalo bien y vuelve a intentarlo…
+            </p>
+            <button id="retryBtn" class="main-btn retry-btn">Volver a intentar 💕</button>
+            <a href="index.html" class="back-link">← Volver al inicio</a>
+        </div>
+
+        <!-- ══════════════════════════════════
+             PANTALLA DE RECOMPENSA
+        ══════════════════════════════════ -->
+        <div id="rewardScreen" class="screen">
+            <div class="reward-card" id="rewardCard">
+                <div id="sparklesTop"></div>
+
+                <div class="crown-emoji">👑</div>
+                <h1 class="reward-title">¡Felicidades! 🎉</h1>
+
+                <p class="reward-message">
+                    Has ganado <strong>un millón de abrazos</strong> 🤗💜<br><br>
+                    Lo sabía… nadie nos conoce mejor que tú misma.<br>
+                    Eres increíble, Sanlly. 🌸<br><br>
+                    Ahora… <em>cierra los ojos y disfruta de esta canción</em> que elegí pensando en ti. 🎵✨
+                </p>
+
+                <div class="eyes-hint">
+                    <span class="eyes-icon">🙈</span>
+                    <span>Cierra los ojos…</span>
+                </div>
+
+                <!-- Música nueva -->
+                <div class="music-player" id="musicPlayer">
+                    <div class="music-icon">🎵</div>
+                    <div class="music-info">
+                        <p class="music-title">Jósean Log – Si Hay Algo</p>
+                        <p class="music-artist">con todo mi amor 💜</p>
+                    </div>
+                    <button id="playPauseBtn" class="play-btn">▶</button>
+                </div>
+
+                <audio id="rewardMusic">
+                    <source src="assets/Jósean Log - Si Hay Algo.mp3" type="audio/mpeg">
+                </audio>
+
+                <div id="sparklesBottom"></div>
+            </div>
+
+            <a href="index.html" class="back-link">← Volver al inicio</a>
+        </div>
+
+    </div>
+
+    <script src="trivia.js"></script>
+</body>
+
+</html>

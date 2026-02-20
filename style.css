@@ -154,6 +154,41 @@ a#surpriseBtn:hover {
     box-shadow: 0 8px 25px rgba(199, 125, 255, 0.7);
 }
 
+a#triviaBtn {
+    display: inline-block;
+    margin-top: 1rem;
+    background: linear-gradient(135deg, #9d4edd, #c77dff);
+    color: white;
+    border: none;
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(157, 78, 221, 0.45);
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    animation: pulseGlowPurple 2.5s infinite;
+}
+
+a#triviaBtn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(157, 78, 221, 0.7);
+}
+
+@keyframes pulseGlowPurple {
+
+    0%,
+    100% {
+        box-shadow: 0 4px 15px rgba(157, 78, 221, 0.45);
+    }
+
+    50% {
+        box-shadow: 0 4px 30px rgba(157, 78, 221, 0.85);
+    }
+}
+
 @keyframes pulseGlow {
 
     0%,
