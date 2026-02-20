@@ -9,7 +9,7 @@
 const REQUIERE_PASSWORD = true;
 
 // 👈 EDITABLE: Cambia la contraseña aquí
-const PASSWORD_CARTAS = 'wellsan';
+const PASSWORD_CARTAS = 'wecmsevb';
 // 👆 EDITABLE: Cambia la contraseña aquí
 
 // Verificar autenticación (debe estar logueado)

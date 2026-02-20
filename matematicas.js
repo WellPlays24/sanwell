@@ -9,7 +9,7 @@
 const REQUIERE_PASSWORD = true;
 
 // 👈 EDITABLE: Cambia la contraseña aquí
-const PASSWORD_MATEMATICAS = 'wellsan';
+const PASSWORD_MATEMATICAS = 'wecmsevb';
 // 👆 EDITABLE: Cambia la contraseña aquí
 
 // Verificar autenticación
