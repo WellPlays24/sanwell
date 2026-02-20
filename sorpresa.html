@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Sorpresa Especial 💜</title>
+    <link rel="stylesheet" href="sorpresa.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Fondo de estrellas / partículas -->
+    <div id="stars-bg"></div>
+
+    <div class="container" id="mainContainer">
+
+        <!-- Pantalla de instrucciones -->
+        <div id="introScreen" class="screen active">
+            <h1 class="title">🌸 Una sorpresa especial</h1>
+            <p class="subtitle">Tengo algo muy lindo esperando por ti...</p>
+            <p class="instruction-text">
+                Pero primero… <strong>¡atrapa 15 corazones!</strong><br>
+                Cada corazón que toques me recuerda cuánto me alegra que estés en mi vida. 💜
+            </p>
+            <button id="startBtn" class="main-btn">¡Vamos! 💕</button>
+            <a href="index.html" class="back-link">← Volver</a>
+        </div>
+
+        <!-- Pantalla del juego -->
+        <div id="gameScreen" class="screen">
+            <div id="gameHeader">
+                <p class="counter-label">Corazones atrapados</p>
+                <div id="progressBar">
+                    <div id="progressFill"></div>
+                </div>
+                <p id="counterDisplay">0 / 15</p>
+            </div>
+            <p class="hint-text">¡Toca los corazones antes de que escapen! 💨</p>
+        </div>
+
+        <!-- Pantalla de recompensa -->
+        <div id="rewardScreen" class="screen">
+            <div class="reward-card" id="rewardCard">
+                <div id="sparklesTop"></div>
+
+                <h1 class="reward-title">¡Lo lograste! 🎉</h1>
+
+                <p class="reward-message">
+                    Así como atrapaste esos corazoncitos,<br>
+                    tú has atrapado el mío sin siquiera intentarlo. 💜<br><br>
+                    Eres de esas personas raras y mágicas<br>
+                    que hacen que el mundo valga más la pena. 🌸<br><br>
+                    Gracias por existir, Sanlly.
+                </p>
+
+                <div class="music-player" id="musicPlayer">
+                    <div class="music-icon">🎵</div>
+                    <div class="music-info">
+                        <p class="music-title">Una canción para ti</p>
+                        <p class="music-artist">con todo mi cariño 💜</p>
+                    </div>
+                    <button id="playPauseBtn" class="play-btn">▶</button>
+                </div>
+
+                <audio id="rewardMusic">
+                    <!-- Usará la misma canción por ahora; cambia src si tienes otra -->
+                    <source src="assets/Hoobastank - The Reason.mp3" type="audio/mpeg">
+                </audio>
+
+                <div id="sparklesBottom"></div>
+            </div>
+
+            <a href="index.html" class="back-link">← Volver al inicio</a>
+        </div>
+
+    </div>
+
+    <!-- Corazones del juego (se inyectan por JS) -->
+    <div id="heartPlayfield"></div>
+
+    <script src="sorpresa.js"></script>
+</body>
+
+</html>
