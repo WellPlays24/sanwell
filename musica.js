@@ -77,6 +77,14 @@ const songs = [
         src: "assets/Billie Eilish - Wildflower.mp3",
         cover: "🌸"
     }
+    ,
+    {
+        title: "Fantasmas",
+        artist: "Humbe",
+        album: "Sanlly's Love",
+        src: "assets/Humbe - Fantasmas.mp3",
+        cover: "🌸"
+    }
     // 👆 EDITABLE: Añade más canciones aquí
 ];
 
