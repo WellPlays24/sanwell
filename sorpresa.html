@@ -6,12 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu Sorpresa Especial 💜</title>
     <link rel="stylesheet" href="sorpresa.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-logo">Sanlly 💜</div>
+        <button class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="inicio.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="sorpresa.html" class="nav-link active"><i class="fas fa-heart"></i> Sorpresa</a></li>
+            <li><a href="trivia.html" class="nav-link"><i class="fas fa-question-circle"></i> Trivia</a></li>
+            <li><a href="matematicas.html" class="nav-link"><i class="fas fa-calculator"></i> Matemáticas</a></li>
+            <li><a href="musica.html" class="nav-link"><i class="fas fa-music"></i> Música</a></li>
+            <li><a href="cartas.html" class="nav-link"><i class="fas fa-envelope"></i> Cartas</a></li>
+        </ul>
+    </nav>
 
     <!-- Fondo de estrellas / partículas -->
     <div id="stars-bg"></div>
@@ -27,7 +42,7 @@
                 Cada corazón que toques me recuerda cuánto me alegra que estés en mi vida. 💜
             </p>
             <button id="startBtn" class="main-btn">¡Vamos! 💕</button>
-            <a href="index.html" class="back-link">← Volver</a>
+            <a href="inicio.html" class="back-link">← Volver</a>
         </div>
 
         <!-- Pantalla del juego -->
@@ -74,7 +89,7 @@
                 <div id="sparklesBottom"></div>
             </div>
 
-            <a href="index.html" class="back-link">← Volver al inicio</a>
+            <a href="inicio.html" class="back-link">← Volver al inicio</a>
         </div>
 
     </div>

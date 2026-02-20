@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartas Secretas 💜</title>
+    <link rel="stylesheet" href="cartas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-logo">Sanlly 💜</div>
+        <button class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="inicio.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="sorpresa.html" class="nav-link"><i class="fas fa-heart"></i> Sorpresa</a></li>
+            <li><a href="trivia.html" class="nav-link"><i class="fas fa-question-circle"></i> Trivia</a></li>
+            <li><a href="matematicas.html" class="nav-link"><i class="fas fa-calculator"></i> Matemáticas</a></li>
+            <li><a href="musica.html" class="nav-link"><i class="fas fa-music"></i> Música</a></li>
+            <li><a href="cartas.html" class="nav-link active"><i class="fas fa-envelope"></i> Cartas</a></li>
+        </ul>
+    </nav>
+
+    <!-- Fondo animado -->
+    <div class="bg-animation">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <div class="container" id="mainContainer">
+
+        <!-- Pantalla de contraseña -->
+        <div id="passwordScreen" class="screen active">
+            <div class="lock-icon">🔒</div>
+            <h1 class="title">Cartas Secretas</h1>
+            <p class="subtitle">Ingresa la clave para ver las cartas</p>
+            
+            <div class="password-form">
+                <input type="password" id="passwordInput" class="password-input" placeholder="Clave secreta" autocomplete="off">
+                <button id="passwordBtn" class="password-btn">¡Entrar! 💌</button>
+            </div>
+            
+            <p class="password-error" id="passwordError">❌ Clave incorrecta</p>
+            
+            <a href="inicio.html" class="back-link">← Volver al inicio</a>
+        </div>
+
+        <!-- Pantalla de las cartas -->
+        <div id="cartasScreen" class="screen">
+            <header>
+                <div class="header-icon">💌</div>
+                <h1 class="title">Cartas Secretas</h1>
+                <p class="subtitle">Toca un sobre para leer su mensaje 💕</p>
+            </header>
+
+            <div class="cards-container">
+                <!-- Carta 1 -->
+                <div class="envelope" data-carta="1" data-mensaje="Cada mañana que despierto, lo primero que pienso es en ti. Tu sonrisa ilumina mis días y tu voz es la mejor melodía. Gracias por existir, Sanlly. 💜">
+                    <div class="envelope-closed">
+                        <span class="tap-hint">Toca aquí</span>
+                    </div>
+                </div>
+
+                <!-- Carta 2 -->
+                <div class="envelope" data-carta="2" data-mensaje="Eres la persona más especial que he conocido. Tu forma de ser, tu sonrisa... todo en ti me hace enamorarme más cada día. 🌸">
+                    <div class="envelope-closed">
+                        <span class="tap-hint">Toca aquí</span>
+                    </div>
+                </div>
+
+                <!-- Carta 3 -->
+                <div class="envelope" data-carta="3" data-mensaje="No importa cuanto tiempo pase, siempre querré estar contigo. Eres mi persona favorita en todo el universo. 🌍💖">
+                    <div class="envelope-closed">
+                        <span class="tap-hint">Toca aquí</span>
+                    </div>
+                </div>
+
+                <!-- Carta 4 -->
+                <div class="envelope" data-carta="4" data-mensaje="Contigo he vivido los momentos más bonitos de mi vida. No puedo esperar para crear más recuerdos contigo. ✨">
+                    <div class="envelope-closed">
+                        <span class="tap-hint">Toca aquí</span>
+                    </div>
+                </div>
+
+                <!-- Carta 5 -->
+                <div class="envelope" data-carta="5" data-mensaje="Tu risa es mi sonido favorito en el mundo. Hacerte reír es mi misión diaria. 😄💜">
+                    <div class="envelope-closed">
+                        <span class="tap-hint">Toca aquí</span>
+                    </div>
+                </div>
+
+                <!-- Carta 6 -->
+                <div class="envelope" data-carta="6" data-mensaje="Te quiero hoy, te quiero mañana, te quiero siempre. Eres mi todo. 💝">
+                    <div class="envelope-closed">
+                        <span class="tap-hint">Toca aquí</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="counter-section">
+                <p class="counter-text">Cartas leídas: <span id="readCount">0</span> / 6</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-heart">💌</div>
+            <p class="modal-text" id="modalText"></p>
+            <div class="modal-sparkles">✨ 💜 ✨</div>
+        </div>
+    </div>
+
+    <script src="cartas.js"></script>
+</body>
+
+</html>

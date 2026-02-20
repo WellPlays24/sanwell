@@ -6,6 +6,27 @@ let caught = 0;
 let gameActive = false;
 let spawnInterval = null;
 
+/* Verificar autenticación */
+function checkAuth() {
+    const isLoggedIn = sessionStorage.getItem('loggedIn');
+    if (isLoggedIn !== 'true') {
+        window.location.href = 'login.html';
+    }
+}
+
+/* Navbar */
+document.addEventListener('DOMContentLoaded', () => {
+    checkAuth();
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => navMenu.classList.remove('open'));
+        });
+    }
+});
+
 /* ============================================================
    ESTRELLAS DE FONDO
    ============================================================ */

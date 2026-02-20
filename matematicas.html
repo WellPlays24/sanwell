@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafío Matemático 💜</title>
+    <link rel="stylesheet" href="matematicas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-logo">Sanlly 💜</div>
+        <button class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="inicio.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="sorpresa.html" class="nav-link"><i class="fas fa-heart"></i> Sorpresa</a></li>
+            <li><a href="trivia.html" class="nav-link"><i class="fas fa-question-circle"></i> Trivia</a></li>
+            <li><a href="matematicas.html" class="nav-link active"><i class="fas fa-calculator"></i> Matemáticas</a></li>
+            <li><a href="musica.html" class="nav-link"><i class="fas fa-music"></i> Música</a></li>
+            <li><a href="cartas.html" class="nav-link"><i class="fas fa-envelope"></i> Cartas</a></li>
+        </ul>
+    </nav>
+
+    <!-- Fondo animado -->
+    <div class="bg-animation">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <div class="container" id="mainContainer">
+
+        <!-- Pantalla de contraseña -->
+        <div id="passwordScreen" class="screen active">
+            <div class="lock-icon">🔒</div>
+            <h1 class="title">Desafío Matemático</h1>
+            <p class="subtitle">Ingresa la clave para jugar</p>
+            
+            <div class="password-form">
+                <input type="password" id="passwordInput" class="password-input" placeholder="Clave secreta" autocomplete="off">
+                <button id="passwordBtn" class="password-btn">¡Entrar! 🧠</button>
+            </div>
+            
+            <p class="password-error" id="passwordError">❌ Clave incorrecta</p>
+            
+            <a href="inicio.html" class="back-link">← Volver al inicio</a>
+        </div>
+
+        <!-- Pantalla de inicio del juego -->
+        <div id="introScreen" class="screen">
+            <div class="intro-icon">🧮</div>
+            <h1 class="title">Desafío Matemático</h1>
+            <p class="subtitle">¿Qué tan rápido puedes resolver estos problemas?</p>
+            <div class="instruction-box">
+                <p>
+                    Resuelve <strong>10 problemas matemáticos</strong>.<br>
+                    Incluyen multiplicaciones, fracciones y exponentes.<br><br>
+                    Si completas el reto… <strong>habrá una sorpresa 💜</strong>
+                </p>
+            </div>
+            <button id="startBtn" class="main-btn">¡Empezar! 🧠</button>
+            <a href="inicio.html" class="back-link">← Volver al inicio</a>
+        </div>
+
+        <!-- Pantalla del juego -->
+        <div id="gameScreen" class="screen">
+            <div class="game-header">
+                <div class="progress-label">Problema <span id="currentQ">1</span> de <span id="totalQ">10</span></div>
+                <div id="progressBar">
+                    <div id="progressFill"></div>
+                </div>
+                <div class="timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="timerDisplay">30</span>s
+                </div>
+            </div>
+
+            <div class="problem-card" id="problemCard">
+                <div class="problem-emoji" id="problemEmoji">🔢</div>
+                <p class="problem-text" id="problemText">2 × 3 = ?</p>
+            </div>
+
+            <div class="answer-section">
+                <input type="number" id="answerInput" class="answer-input" placeholder="?" autocomplete="off">
+                <button id="submitBtn" class="submit-btn">
+                    <i class="fas fa-check"></i>
+                </button>
+            </div>
+
+            <div class="hint-text">Escribe tu respuesta y presiona ✓</div>
+
+            <div class="feedback-msg" id="feedbackMsg"></div>
+        </div>
+
+        <!-- Pantalla de game over -->
+        <div id="failScreen" class="screen">
+            <div class="fail-emoji">😢</div>
+            <h2 class="fail-title">¡Se acabó el tiempo!</h2>
+            <p class="fail-text">
+                No te preocupes, amor. 💜<br>
+                Inténtalo de nuevo, estoy seguro de que puedes hacerlo.
+            </p>
+            <button id="retryBtn" class="main-btn retry-btn">¡Intentar de nuevo! 💕</button>
+            <a href="inicio.html" class="back-link">← Volver al inicio</a>
+        </div>
+
+        <!-- Pantalla de recompensa -->
+        <div id="rewardScreen" class="screen">
+            <div class="reward-card" id="rewardCard">
+                <div id="sparklesTop"></div>
+
+                <div class="crown-emoji">👑</div>
+                <h1 class="reward-title">¡Felicidades! 🎉</h1>
+
+                <p class="reward-message">
+                    Has ganado <strong>un millón de besos</strong> 😘💋<br><br>
+                    Lo sabía… eres inteligente y hermosa.<br>
+                    Eres increíble, Sanlly. 🌸<br><br>
+                    Ahora… <em>cierra los ojos y disfruta de esta canción</em> que elegí pensando en ti. 🎵✨
+                </p>
+
+                <div class="eyes-hint">
+                    <span class="eyes-icon">🙈</span>
+                    <span>Cierra los ojos…</span>
+                </div>
+
+                <div class="music-player" id="musicPlayer">
+                    <div class="music-icon">🎵</div>
+                    <div class="music-info">
+                        <p class="music-title">Oasis - Wonderwall</p>
+                        <p class="music-artist">con todo mi amor 💜</p>
+                    </div>
+                    <button id="playPauseBtn" class="play-btn">▶</button>
+                </div>
+
+                <audio id="rewardMusic">
+                    <source src="assets/Oasis - Wonderwall.mp3" type="audio/mpeg">
+                </audio>
+
+                <div id="sparklesBottom"></div>
+            </div>
+
+            <a href="inicio.html" class="back-link">← Volver al inicio</a>
+        </div>
+
+    </div>
+
+    <script src="matematicas.js"></script>
+</body>
+
+</html>
