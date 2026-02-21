@@ -15,13 +15,26 @@ const PASSWORD_MATEMATICAS = 'wecmsevb';
 // Verificar autenticación
 function checkAuth() {
     const isLoggedIn = sessionStorage.getItem('loggedIn');
+    const rol = sessionStorage.getItem('rol');
+    
     if (isLoggedIn !== 'true') {
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
+        return false;
     }
+    
+    if (rol === 'invitado') {
+        alert('¡Esta sección es solo para administradores! 💜');
+        window.location.href = 'inicio.html';
+        return false;
+    }
+    
+    return true;
 }
 
 // Ejecutar verificación inmediatamente
-checkAuth();
+if (!checkAuth()) {
+    throw new Error('No autorizado');
+}
 
 // Control de contraseña
 const passwordScreen = document.getElementById('passwordScreen');

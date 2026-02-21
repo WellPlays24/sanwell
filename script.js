@@ -2,25 +2,70 @@ document.addEventListener('DOMContentLoaded', () => {
     checkAuth();
     createFloatingHearts();
     createParticles();
-    initMusicPlayer();
     initDaysCounter();
     initNavbar();
+    aplicarRestricciones();
 
     const btn = document.getElementById('loveBtn');
     const audio = document.getElementById('bgMusic');
+    const musicSection = document.querySelector('.music-section');
+    const loveButtonContainer = document.querySelector('.button-group');
 
-    btn.addEventListener('click', () => {
-        burstHearts();
-        audio.volume = 0.5;
-        showLoveMessage();
-    });
+    // Solo admins pueden usar el botón de amor y música
+    const rol = sessionStorage.getItem('rol');
+    
+    if (rol === 'admin') {
+        if (musicSection) musicSection.style.display = 'block';
+        if (loveButtonContainer) loveButtonContainer.style.display = 'block';
+        
+        initMusicPlayer();
+        
+        if (btn && audio) {
+            btn.addEventListener('click', () => {
+                burstHearts();
+                audio.volume = 0.5;
+                showLoveMessage();
+            });
+        }
+    } else {
+        // Invitado - ocultar funciones interactivas
+        if (musicSection) musicSection.style.display = 'none';
+        if (loveButtonContainer) loveButtonContainer.style.display = 'none';
+    }
 });
+
+// ========== APLICAR RESTRICCIONES POR ROL ==========
+function aplicarRestricciones() {
+    const rol = sessionStorage.getItem('rol');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    // Si es invitado, ocultar páginas no permitidas
+    if (rol === 'invitado' && CONFIG_INVITADO) {
+        const permitidas = CONFIG_INVITADO.paginasPermitidas;
+        
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            const pagina = href.replace('.html', '');
+            
+            if (permitidas[pagina] === false) {
+                link.style.display = 'none';
+            }
+        });
+        
+        // Mostrar mensaje de bienvenido especial para invitado
+        const welcomeEl = document.getElementById('welcomeMessage');
+        if (welcomeEl) {
+            welcomeEl.innerHTML = '¡Bienvenido, invitado! 💚';
+            welcomeEl.style.color = '#4ade80';
+        }
+    }
+}
 
 // ========== VERIFICAR AUTENTICACIÓN ==========
 function checkAuth() {
     const isLoggedIn = sessionStorage.getItem('loggedIn');
     if (isLoggedIn !== 'true') {
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
     }
 }
 

@@ -15,12 +15,27 @@ const PASSWORD_CARTAS = 'wecmsevb';
 // Verificar autenticación (debe estar logueado)
 function checkAuth() {
     const isLoggedIn = sessionStorage.getItem('loggedIn');
+    const rol = sessionStorage.getItem('rol');
+    
+    // Si no está logueado, ir al login
     if (isLoggedIn !== 'true') {
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
+        return false;
     }
+    
+    // Si es invitado, no puede entrar a cartas
+    if (rol === 'invitado') {
+        alert('¡Esta sección es solo para administradores! 💜');
+        window.location.href = 'inicio.html';
+        return false;
+    }
+    
+    return true;
 }
 
-checkAuth();
+if (!checkAuth()) {
+    throw new Error('No autorizado');
+}
 
 // Elementos
 const passwordScreen = document.getElementById('passwordScreen');

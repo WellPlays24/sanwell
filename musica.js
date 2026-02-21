@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Verificar autenticación
     const isLoggedIn = sessionStorage.getItem('loggedIn');
     if (isLoggedIn !== 'true') {
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
         return;
     }
     renderSongs();

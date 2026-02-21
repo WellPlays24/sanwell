@@ -2,23 +2,8 @@
    LOGIN.JS - Sistema de autenticación romántica
    ============================================================================= */
 
-/* ================================
-   CONFIGURACIÓN DE USUARIOS
-   ================================
-   Aquí puedes añadir más usuarios si lo deseas.
-   Formato: 
-   { nombre: 'nombre', clave: 'contraseña' }
-   
-   IMPORTANTE: Los nombres y claves deben ser en minúsculas
-   ================================ */
-const USUARIOS_PERMITIDOS = [
-    { nombre: 'sanlly', clave: 'sanwell' },  // 👈 EDITABLE: Sanlly
-    { nombre: 'wellington', clave: 'sanwell' }  // 👈 EDITABLE: Wellington
-];
-
-/* ================================
-   No-editar más abajo
-   ================================ */
+// Cargar configuración de usuarios
+// La configuración está en usuarios.js
 
 // Elementos del DOM
 const loginForm = document.getElementById('loginForm');
@@ -53,7 +38,6 @@ function createParticles() {
 
 // Configurar event listeners
 function setupEventListeners() {
-    // Toggle mostrar/ocultar contraseña
     togglePassword.addEventListener('click', () => {
         const type = passwordInput.type === 'password' ? 'text' : 'password';
         passwordInput.type = type;
@@ -62,22 +46,13 @@ function setupEventListeners() {
             : '<i class="fas fa-eye-slash"></i>';
     });
 
-    // Enviar formulario
     loginForm.addEventListener('submit', handleLogin);
 
-    // Limpiar error al escribir
-    usernameInput.addEventListener('input', () => {
-        clearError();
-    });
-    passwordInput.addEventListener('input', () => {
-        clearError();
-    });
+    usernameInput.addEventListener('input', () => clearError());
+    passwordInput.addEventListener('input', () => clearError());
 
-    // Permitir enter en el input
     passwordInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            handleLogin(e);
-        }
+        if (e.key === 'Enter') handleLogin(e);
     });
 }
 
@@ -93,41 +68,55 @@ function handleLogin(e) {
         return;
     }
 
-    // Validar credenciales
-    const usuarioValido = USUARIOS_PERMITIDOS.find(
-        u => u.nombre === nombre && u.clave === clave
+    // Validar credenciales usando la función del archivo de config
+    const usuarioValido = USUARIOS.find(u => 
+        u.nombre.toLowerCase() === nombre && 
+        u.clave === clave
     );
 
     if (usuarioValido) {
-        // Login exitoso
-        performLogin(usuarioValido.nombre);
+        // Login exitoso - reiniciar contador de intentos
+        sessionStorage.setItem('loginAttempts', '0');
+        performLogin(usuarioValido);
     } else {
-        // Login fallido
-        showError('Ups! Credenciales incorrectas 💔');
+        // Login fallido - contar intentos
+        let attempts = parseInt(sessionStorage.getItem('loginAttempts') || '0');
+        attempts++;
+        sessionStorage.setItem('loginAttempts', attempts.toString());
+        
+        // Si reach 3 intentos, redirigir a página troll
+        if (attempts >= 3) {
+            window.location.href = 'troll.html';
+            return;
+        }
+        
+        const restantes = 3 - attempts;
+        showError(`Ups! Credenciales incorrectas 💔 (${restantes} intentos restantes)`);
         shakeInputs();
     }
 }
 
 // Realizar login
-function performLogin(nombre) {
+function performLogin(usuario) {
     // Guardar sesión
-    let nombreMostrar;
-    let mensajeBienvenida;
-    
-    if (nombre === 'sanlly') {
-        nombreMostrar = 'Sanlly';
-        mensajeBienvenida = '¡Hola, mi Sanlly! 💜';
-    } else if (nombre === 'wellington') {
-        nombreMostrar = 'Wellington';
-        mensajeBienvenida = '¡Hola, mi Wellington! 💙';
-    } else {
-        nombreMostrar = nombre.charAt(0).toUpperCase() + nombre.slice(1);
-        mensajeBienvenida = `¡Hola, ${nombreMostrar}! ❤️`;
-    }
-    
-    sessionStorage.setItem('usuario', nombre);
-    sessionStorage.setItem('nombreMostrar', nombreMostrar);
+    sessionStorage.setItem('usuario', usuario.nombre);
+    sessionStorage.setItem('nombreMostrar', usuario.nombreMostrar);
+    sessionStorage.setItem('rol', usuario.rol);
     sessionStorage.setItem('loggedIn', 'true');
+
+    // Mensaje de bienvenida según el usuario
+    let mensajeBienvenida;
+    if (usuario.rol === 'admin') {
+        if (usuario.nombre === 'sanlly') {
+            mensajeBienvenida = '¡Hola, mi Sanlly! 💜';
+        } else if (usuario.nombre === 'wellington') {
+            mensajeBienvenida = '¡Hola, mi Wellington! 💙';
+        } else {
+            mensajeBienvenida = `¡Hola, ${usuario.nombreMostrar}! ❤️`;
+        }
+    } else if (usuario.rol === 'invitado') {
+        mensajeBienvenida = '¡Bienvenido! 💚';
+    }
 
     // Mostrar animación de carga con mensaje de bienvenida
     const loadingName = document.getElementById('loadingName');
@@ -173,10 +162,8 @@ function shakeInputs() {
 function checkAuth() {
     const isLoggedIn = sessionStorage.getItem('loggedIn');
     if (isLoggedIn === 'true') {
-        // Ya está logueado, redirigir
-        window.location.href = 'index.html';
+        window.location.href = 'inicio.html';
     }
 }
 
-// Ejecutar verificación al cargar
 checkAuth();
